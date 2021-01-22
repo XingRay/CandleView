@@ -4,6 +4,7 @@ module CandleView {
     requires JavaBase;
     requires javafx.graphics;
     requires Collection;
+    requires slf4j.api;
 
     exports com.xingray.candleview;
 }

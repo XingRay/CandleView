@@ -7,17 +7,23 @@ import com.xingray.javabase.range.DoubleRange;
 import com.xingray.view.Canvas;
 import com.xingray.view.Color;
 import com.xingray.view.Paint;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CandleView extends FxView {
 
-
     // properties
     private Color backgroundLineColor = Color.rgb(50, 50, 50, 50);
     private Color textColor = Color.rgb(100, 50, 50, 50);
     private int textWidth = 40;
+    private double barDrawRatio = 0.9;
+    private int barCountMin = 0;
+    private int barCountMax = 1000;
 
     private Color upColor = FxColor.toColor(javafx.scene.paint.Color.RED);
     private Color downColor = FxColor.toColor(javafx.scene.paint.Color.GREEN);
@@ -25,7 +31,7 @@ public class CandleView extends FxView {
 
     // data
     private CandleSeries candleSeries;
-    private List<Line> lines = new ArrayList<>();
+    private final List<Line> lines = new ArrayList<>();
 
     // tmp
     private double halfCandleWidth;
@@ -33,7 +39,43 @@ public class CandleView extends FxView {
     private DoubleRange valueRange;
     private boolean isDataUpdated;
 
+    private final Logger log = LoggerFactory.getLogger(CandleView.class);
+    private double barWidth;
+    private CandleSeriesCallback candleSeriesCallback;
+    private int firstBarIndex;
+
     public CandleView() {
+        setOnMouseMoved(new EventHandler<>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getX();
+                if (x > (getWidth() - textWidth)) {
+                    return;
+                }
+                double y = event.getY();
+                CandleSeries candleSeries = CandleView.this.candleSeries;
+                if (candleSeries == null || candleSeries.length() == 0) {
+                    return;
+                }
+
+
+                int index = (int) (x / barWidth) + firstBarIndex;
+                if (index >= candleSeries.length()) {
+                    return;
+                }
+                if (candleSeriesCallback != null) {
+                    candleSeriesCallback.onSelect(candleSeries, index);
+                }
+            }
+        });
+    }
+
+    public interface CandleSeriesCallback {
+        void onSelect(CandleSeries candleSeries, int index);
+    }
+
+    public void setCandleSeriesCallback(CandleSeriesCallback candleSeriesCallback) {
+        this.candleSeriesCallback = candleSeriesCallback;
     }
 
     public void setUpColor(Color upColor) {
@@ -58,34 +100,6 @@ public class CandleView extends FxView {
         invalidate();
     }
 
-//    public void addCandle(Candle candle) {
-//        candleSeries.add(candle);
-//
-//        isDataUpdated = true;
-//        invalidate();
-//    }
-//
-//    public void addOrUpdateCandle(Candle candle) {
-//        if (candleSeries.isEmpty()) {
-//            candleSeries.add(candle);
-//            isDataUpdated = true;
-//            invalidate();
-//            return;
-//        }
-//
-//        int index = candleSeries.size() - 1;
-//        Candle lastCandle = candleSeries.get(index);
-//        if (lastCandle.getTimeSecond() == candle.getTimeSecond()) {
-//            candleSeries.set(index, candle);
-//            isDataUpdated = true;
-//            invalidate();
-//        } else {
-//            candleSeries.add(candle);
-//            isDataUpdated = true;
-//            invalidate();
-//        }
-//    }
-
     public void setBackgroundLineColor(Color color) {
         this.backgroundLineColor = color;
         invalidate();
@@ -109,6 +123,14 @@ public class CandleView extends FxView {
         invalidate();
     }
 
+    public void setBarCountMin(int barCountMin) {
+        this.barCountMin = barCountMin;
+    }
+
+    public void setBarCountMax(int barCountMax) {
+        this.barCountMax = barCountMax;
+    }
+
     public void notifyDataUpdated() {
         isDataUpdated = true;
         invalidate();
@@ -120,22 +142,23 @@ public class CandleView extends FxView {
 
     @Override
     public void onDraw(Canvas canvas) {
-        if (candleSeries == null || candleSeries.length() == 0) {
+        CandleSeries candleSeries = this.candleSeries;
+        int length = candleSeries == null ? 0 : candleSeries.length();
+        if (length == 0) {
             return;
         }
+        int barCount = Math.min(barCountMax, Math.max(barCountMin, length));
+        if (barCount == 0) {
+            return;
+        }
+        firstBarIndex = Math.max(length - barCount, 0);
 
         double width = getWidth();
         double height = getHeight();
 
         if (isDataUpdated) {
-            valueRange = getValuesRange(candleSeries, lines);
+            valueRange = CandleUtil.getValuesRange(candleSeries, lines);
         }
-
-        int size = candleSeries.length();
-
-        halfCandleWidth = ((width - textWidth) / (2 * (size + 1)));
-        double gap = halfCandleWidth * 0.2;
-        halfCandleWidth = halfCandleWidth * 0.9;
 
         double min = valueRange.getStart();
         double max = valueRange.getEnd();
@@ -146,28 +169,31 @@ public class CandleView extends FxView {
             heightRatio = height * 0.9;
         }
 
-        double[] xPositions = new double[size];
-        for (int i = 0; i < size; i++) {
-            xPositions[i] = (2 * i + 1) * halfCandleWidth + (i + 1) * gap;
+        barWidth = (width - textWidth) / barCount;
+        double halfCandleWidth = (barWidth * barDrawRatio) / 2;
+
+        double[] xPositions = new double[barCount];
+        for (int i = 0; i < barCount; i++) {
+            xPositions[i] = (i + 0.5) * barWidth;
         }
 
         drawBackgroundLines(canvas, width, height, min, max, xPositions);
-        drawCandles(canvas, size, xPositions);
-        drawLines(canvas, lines, xPositions);
+        drawCandles(canvas, candleSeries, firstBarIndex, barCount, xPositions, halfCandleWidth);
+        drawLines(canvas, lines, firstBarIndex, xPositions);
     }
 
-    public void drawCandles(Canvas canvas, int size, double[] xPositions) {
+    public void drawCandles(Canvas canvas, CandleSeries candleSeries, int firstBarIndex, int barCount, double[] xPositions, double halfCandleWidth) {
         if (candleSeries == null || candleSeries.length() == 0) {
             return;
         }
-
+        int size = Math.min(barCount, candleSeries.length() - firstBarIndex);
         for (int i = 0; i < size; i++) {
             double position = xPositions[i];
-            drawCandle(canvas, position, candleSeries, i);
+            drawCandle(canvas, position, candleSeries, i + firstBarIndex, halfCandleWidth, heightRatio);
         }
     }
 
-    public void drawCandle(Canvas canvas, double position, CandleSeries candleSeries, int index) {
+    public void drawCandle(Canvas canvas, double position, CandleSeries candleSeries, int index, double halfCandleWidth, double heightRatio) {
         double open = candleSeries.getOpen(index);
         double close = candleSeries.getClose(index);
         double high = candleSeries.getHigh(index);
@@ -215,15 +241,10 @@ public class CandleView extends FxView {
         }
     }
 
-    public void drawLines(Canvas canvas, List<Line> lines, double[] xPositions) {
+    public void drawLines(Canvas canvas, List<Line> lines, int firstBarIndex, double[] xPositions) {
         for (Line line : lines) {
-            ViewHelper.drawLine(canvas, xPositions, line, this::getY);
+            ViewHelper.drawLine(canvas, xPositions, line, firstBarIndex, this::getY);
         }
-    }
-
-    public DoubleRange getValuesRange(CandleSeries candleSeries, List<Line> lines) {
-        DoubleRange range = CandleUtil.getValuesRange(candleSeries);
-        return CandleUtil.getValuesRange(lines, range);
     }
 
     public void drawBackgroundLines(Canvas canvas, double width, double height, double min, double max, double[] positions) {

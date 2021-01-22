@@ -183,7 +183,7 @@ public class IndicatorView extends FxView {
 //            drawLine(canvas, size, xPositions, i);
 //        }
         for (Line line : lines) {
-            ViewHelper.drawLine(canvas, xPositions, line, this::getY);
+            ViewHelper.drawLine(canvas, xPositions, line, 0, this::getY);
         }
     }
 

@@ -90,4 +90,9 @@ public class CandleUtil {
         }
         return range;
     }
+
+    public static DoubleRange getValuesRange(CandleSeries candleSeries, List<Line> lines) {
+        DoubleRange range = CandleUtil.getValuesRange(candleSeries);
+        return CandleUtil.getValuesRange(lines, range);
+    }
 }

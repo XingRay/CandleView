@@ -11,4 +11,8 @@ public interface CandleSeries {
     double getHigh(int index);
 
     double getLow(int index);
+
+    long getVolume(int index);
+
+    long getTimeSecond(int index);
 }
