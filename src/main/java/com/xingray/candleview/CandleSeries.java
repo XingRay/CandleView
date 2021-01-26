@@ -12,7 +12,9 @@ public interface CandleSeries {
 
     double getLow(int index);
 
-    long getVolume(int index);
+    long getTradeVolume(int index);
+
+    long getTradeAmount(int index);
 
     long getTimeSecond(int index);
 }
