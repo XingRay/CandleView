@@ -4,6 +4,7 @@ package com.xingray.candleview;
 import com.xingray.fxview.FxColor;
 import com.xingray.fxview.FxView;
 import com.xingray.javabase.range.DoubleRange;
+import com.xingray.stock.analysis.candle.CandleSeries;
 import com.xingray.view.Canvas;
 import com.xingray.view.Color;
 import com.xingray.view.Paint;
@@ -194,10 +195,10 @@ public class CandleView extends FxView {
     }
 
     public void drawCandle(Canvas canvas, double position, CandleSeries candleSeries, int index, double halfCandleWidth, double heightRatio) {
-        double open = candleSeries.getOpen(index);
-        double close = candleSeries.getClose(index);
-        double high = candleSeries.getHigh(index);
-        double low = candleSeries.getLow(index);
+        double open = candleSeries.getOpen(index).doubleValue();
+        double close = candleSeries.getClose(index).doubleValue();
+        double high = candleSeries.getHigh(index).doubleValue();
+        double low = candleSeries.getLow(index).doubleValue();
 
         double top = Math.max(open, close);
         double bottom = Math.min(open, close);

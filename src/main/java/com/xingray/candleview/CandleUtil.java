@@ -2,6 +2,7 @@ package com.xingray.candleview;
 
 import com.xingray.collection.CollectionUtil;
 import com.xingray.javabase.range.DoubleRange;
+import com.xingray.stock.analysis.candle.CandleSeries;
 
 import java.util.List;
 
@@ -56,16 +57,16 @@ public class CandleUtil {
         }
 
         int length = candleSeries.length();
-        double low = candleSeries.getLow(0);
-        double high = candleSeries.getHigh(0);
+        double low = candleSeries.getLow(0).doubleValue();
+        double high = candleSeries.getHigh(0).doubleValue();
 
         for (int i = 1; i < length; i++) {
-            double lowValue = candleSeries.getLow(i);
+            double lowValue = candleSeries.getLow(i).doubleValue();
             if (lowValue < low) {
                 low = lowValue;
             }
 
-            double highValue = candleSeries.getHigh(i);
+            double highValue = candleSeries.getHigh(i).doubleValue();
             if (highValue > high) {
                 high = highValue;
             }

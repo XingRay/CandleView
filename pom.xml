@@ -40,6 +40,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.xingray</groupId>
+            <artifactId>Stock</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
