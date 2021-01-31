@@ -1,6 +1,7 @@
 package com.xingray.candleview;
 
 import com.xingray.collection.CollectionUtil;
+import com.xingray.collection.dataset.DataSet;
 import com.xingray.collection.series.DoubleSeries;
 import com.xingray.fxview.FxColor;
 import com.xingray.fxview.FxView;
@@ -8,8 +9,11 @@ import com.xingray.javabase.range.DoubleRange;
 import com.xingray.view.Canvas;
 import com.xingray.view.Color;
 import com.xingray.view.Paint;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class IndicatorView extends FxView {
@@ -28,9 +32,48 @@ public class IndicatorView extends FxView {
     private double heightRatio;
     private boolean isDataUpdated;
     private DoubleRange valueRange;
+    private double barWidth;
+    private int size;
+
+    private List<IndicatorLineCallback> indicatorLineCallbacks;
 
     public IndicatorView() {
         lines = new ArrayList<>();
+
+        setOnMouseMoved(new EventHandler<>() {
+            @Override
+            public void handle(MouseEvent event) {
+                double x = event.getX();
+                if (x > (getWidth() - textWidth)) {
+                    return;
+                }
+                double y = event.getY();
+                if (size == 0 || barWidth == 0) {
+                    return;
+                }
+
+                int index = (int) (x / barWidth);
+                if (index >= size) {
+                    return;
+                }
+                if (indicatorLineCallbacks != null && !indicatorLineCallbacks.isEmpty()) {
+                    for (IndicatorLineCallback callback : indicatorLineCallbacks) {
+                        callback.onSelect(lines, index);
+                    }
+                }
+            }
+        });
+    }
+
+    public interface IndicatorLineCallback {
+        void onSelect(List<Line> lines, int index);
+    }
+
+    public void addIndicatorLineCallback(IndicatorLineCallback callback) {
+        if (indicatorLineCallbacks == null) {
+            indicatorLineCallbacks = new LinkedList<>();
+        }
+        indicatorLineCallbacks.add(callback);
     }
 
     public void clear() {
@@ -74,6 +117,15 @@ public class IndicatorView extends FxView {
     }
 
     public void notifyDataUpdated() {
+        if (!CollectionUtil.isEmpty(lines)) {
+            for (Line line : lines) {
+                if (line instanceof DataSet) {
+                    DataSet dataSet = (DataSet) line;
+                    dataSet.notifyUpdated();
+                }
+            }
+        }
+
         this.isDataUpdated = true;
         this.invalidate();
     }
@@ -87,7 +139,7 @@ public class IndicatorView extends FxView {
             isDataUpdated = false;
         }
 
-        int size = 0;
+        size = 0;
         if (!CollectionUtil.isEmpty(barSeries)) {
             size = barSeries.length();
         } else if (!CollectionUtil.isEmpty(lines)) {
@@ -113,10 +165,8 @@ public class IndicatorView extends FxView {
             heightRatio = height * 0.9;
         }
 
-        double[] xPositions = new double[size];
-        for (int i = 0; i < size; i++) {
-            xPositions[i] = (2 * i + 1) * halfCandleWidth + (i + 1) * gap;
-        }
+        barWidth = (width - textWidth) / size;
+        double[] xPositions = ViewHelper.getPositions(size, barWidth);
 
         drawBackgroundLines(canvas, width, height, min, max, xPositions);
         drawBars(canvas, barSeries, xPositions);
@@ -179,23 +229,10 @@ public class IndicatorView extends FxView {
     }
 
     public void drawLines(Canvas canvas, List<Line> lines, double[] xPositions) {
-//        for (int i = 0, linesSize = lines.size(); i < linesSize; i++) {
-//            drawLine(canvas, size, xPositions, i);
-//        }
         for (Line line : lines) {
             ViewHelper.drawLine(canvas, xPositions, line, 0, this::getY);
         }
     }
-
-//    public void drawLine(Canvas canvas, int size, double[] xPositions, int i) {
-//        Line line = lines.get(i);
-//        double[] yPositions = new double[size];
-//        for (int j = 0; j < size; j++) {
-//            yPositions[j] = getY(line.get(j));
-//        }
-//        canvas.getPaint().setDrawColor(line.getColor());
-//        canvas.drawPolyline(xPositions, yPositions, size);
-//    }
 
     private double getY(double v) {
         return 0.95 * getHeight() - (v - valueRange.getStart()) * heightRatio;

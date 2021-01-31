@@ -173,10 +173,7 @@ public class CandleView extends FxView {
         barWidth = (width - textWidth) / barCount;
         double halfCandleWidth = (barWidth * barDrawRatio) / 2;
 
-        double[] xPositions = new double[barCount];
-        for (int i = 0; i < barCount; i++) {
-            xPositions[i] = (i + 0.5) * barWidth;
-        }
+        double[] xPositions = ViewHelper.getPositions(barCount, barWidth);
 
         drawBackgroundLines(canvas, width, height, min, max, xPositions);
         drawCandles(canvas, candleSeries, firstBarIndex, barCount, xPositions, halfCandleWidth);

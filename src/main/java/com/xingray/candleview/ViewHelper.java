@@ -24,4 +24,12 @@ public class ViewHelper {
         canvas.getPaint().setDrawColor(line.getColor());
         canvas.drawPolyline(xValues, yValues, k);
     }
+
+    public static double[] getPositions(int pointCount, double distance) {
+        double[] positions = new double[pointCount];
+        for (int i = 0; i < pointCount; i++) {
+            positions[i] = (i + 0.5) * distance;
+        }
+        return positions;
+    }
 }
