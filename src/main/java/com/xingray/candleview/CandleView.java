@@ -1,6 +1,8 @@
 package com.xingray.candleview;
 
 
+import com.xingray.collection.CollectionUtil;
+import com.xingray.collection.dataset.DataSet;
 import com.xingray.fxview.FxColor;
 import com.xingray.fxview.FxView;
 import com.xingray.javabase.range.DoubleRange;
@@ -133,6 +135,15 @@ public class CandleView extends FxView {
     }
 
     public void notifyDataUpdated() {
+        if (!CollectionUtil.isEmpty(lines)) {
+            for (Line line : lines) {
+                if (line instanceof DataSet) {
+                    DataSet dataSet = (DataSet) line;
+                    dataSet.notifyUpdated();
+                }
+            }
+        }
+
         isDataUpdated = true;
         invalidate();
     }
