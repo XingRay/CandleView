@@ -1,11 +1,10 @@
 package com.xingray.candleview;
 
 
-import com.xingray.collection.CollectionUtil;
-import com.xingray.collection.dataset.DataSet;
 import com.xingray.fxview.FxColor;
 import com.xingray.fxview.FxView;
 import com.xingray.javabase.range.DoubleRange;
+import com.xingray.stock.analysis.candle.Candle;
 import com.xingray.stock.analysis.candle.CandleSeries;
 import com.xingray.view.Canvas;
 import com.xingray.view.Color;
@@ -24,7 +23,7 @@ public class CandleView extends FxView {
     private Color backgroundLineColor = Color.rgb(50, 50, 50, 50);
     private Color textColor = Color.rgb(100, 50, 50, 50);
     private int textWidth = 40;
-    private double barDrawRatio = 0.9;
+    private double barWidthRatio = 0.9;
     private int barCountMin = 0;
     private int barCountMax = 1000;
 
@@ -81,6 +80,10 @@ public class CandleView extends FxView {
         this.candleSeriesCallback = candleSeriesCallback;
     }
 
+    public void setBarWidthRatio(double barWidthRatio) {
+        this.barWidthRatio = barWidthRatio;
+    }
+
     public void setUpColor(Color upColor) {
         this.upColor = upColor;
     }
@@ -135,15 +138,6 @@ public class CandleView extends FxView {
     }
 
     public void notifyDataUpdated() {
-        if (!CollectionUtil.isEmpty(lines)) {
-            for (Line line : lines) {
-                if (line instanceof DataSet) {
-                    DataSet dataSet = (DataSet) line;
-                    dataSet.notifyUpdated();
-                }
-            }
-        }
-
         isDataUpdated = true;
         invalidate();
     }
@@ -182,7 +176,7 @@ public class CandleView extends FxView {
         }
 
         barWidth = (width - textWidth) / barCount;
-        double halfCandleWidth = (barWidth * barDrawRatio) / 2;
+        double halfCandleWidth = (barWidth * barWidthRatio) / 2;
 
         double[] xPositions = ViewHelper.getPositions(barCount, barWidth);
 
@@ -203,10 +197,11 @@ public class CandleView extends FxView {
     }
 
     public void drawCandle(Canvas canvas, double position, CandleSeries candleSeries, int index, double halfCandleWidth, double heightRatio) {
-        double open = candleSeries.getOpen(index).doubleValue();
-        double close = candleSeries.getClose(index).doubleValue();
-        double high = candleSeries.getHigh(index).doubleValue();
-        double low = candleSeries.getLow(index).doubleValue();
+        Candle candle = candleSeries.get(index);
+        double open = candle.getOpen().doubleValue();
+        double close = candle.getClose().doubleValue();
+        double high = candle.getHigh().doubleValue();
+        double low = candle.getLow().doubleValue();
 
         double top = Math.max(open, close);
         double bottom = Math.min(open, close);

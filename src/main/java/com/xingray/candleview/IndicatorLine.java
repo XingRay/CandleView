@@ -1,21 +1,21 @@
 package com.xingray.candleview;
 
-import com.xingray.collection.dataset.DataSet;
+import com.xingray.stock.analysis.candle.Candle;
 import com.xingray.stock.analysis.indicator.Indicator;
 import com.xingray.stock.analysis.num.Num;
 import com.xingray.view.Color;
 
-public class IndicatorLine implements Line, DataSet {
+public class IndicatorLine implements Line {
 
     private String name;
-    private Indicator<Num> indicator;
+    private Indicator<Num, Candle> indicator;
     private Color color;
 
-    public IndicatorLine(Indicator<Num> indicator, Color color) {
+    public IndicatorLine(Indicator<Num, Candle> indicator, Color color) {
         this("", indicator, color);
     }
 
-    public IndicatorLine(String name, Indicator<Num> indicator, Color color) {
+    public IndicatorLine(String name, Indicator<Num, Candle> indicator, Color color) {
         this.name = name;
         this.indicator = indicator;
         this.color = color;
@@ -39,10 +39,5 @@ public class IndicatorLine implements Line, DataSet {
     @Override
     public Color getColor() {
         return color;
-    }
-
-    @Override
-    public void notifyUpdated() {
-        indicator.notifyUpdated();
     }
 }

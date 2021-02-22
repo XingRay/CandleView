@@ -1,7 +1,6 @@
 package com.xingray.candleview;
 
 import com.xingray.collection.CollectionUtil;
-import com.xingray.collection.dataset.DataSet;
 import com.xingray.collection.series.DoubleSeries;
 import com.xingray.fxview.FxColor;
 import com.xingray.fxview.FxView;
@@ -117,15 +116,6 @@ public class IndicatorView extends FxView {
     }
 
     public void notifyDataUpdated() {
-        if (!CollectionUtil.isEmpty(lines)) {
-            for (Line line : lines) {
-                if (line instanceof DataSet) {
-                    DataSet dataSet = (DataSet) line;
-                    dataSet.notifyUpdated();
-                }
-            }
-        }
-
         this.isDataUpdated = true;
         this.invalidate();
     }
