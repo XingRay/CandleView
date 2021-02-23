@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c192adb2-6a9e-45dc-a76f-1454e1288d52" name="Default Changelist" comment="更新CandleSeries相关代码">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="module-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\develop\apache\maven\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../develop/apache/maven/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\develop\apache\maven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1m8bwKH2IVhhnumYMSfuC8fk0CE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../View" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.xingray.candleview" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\opensource\CandleView\src\main\java\com\xingray\candleview" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c192adb2-6a9e-45dc-a76f-1454e1288d52" name="Default Changelist" comment="" />
+      <created>1608878402118</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608878402118</updated>
+      <workItem from="1608878403469" duration="8091000" />
+      <workItem from="1609141632442" duration="7000" />
+      <workItem from="1611051728056" duration="1466000" />
+      <workItem from="1611182753526" duration="5229000" />
+      <workItem from="1611277080994" duration="3475000" />
+      <workItem from="1611318418355" duration="3484000" />
+      <workItem from="1611323187366" duration="116000" />
+      <workItem from="1611665180348" duration="936000" />
+      <workItem from="1611923496075" duration="210000" />
+      <workItem from="1612099354204" duration="4006000" />
+      <workItem from="1612149787817" duration="1815000" />
+      <workItem from="1612271163794" duration="1165000" />
+      <workItem from="1612329756608" duration="63000" />
+      <workItem from="1612531335551" duration="13000" />
+      <workItem from="1612531358754" duration="773000" />
+      <workItem from="1613954617502" duration="775000" />
+      <workItem from="1613955866364" duration="5000" />
+      <workItem from="1614045848539" duration="147000" />
+    </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1608886300011</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1608886300011</updated>
+    </task>
+    <task id="LOCAL-00002" summary="实现柱体的鼠标事件回调">
+      <created>1611323289853</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611323289853</updated>
+    </task>
+    <task id="LOCAL-00003" summary="CandleSeries增加获取成交额的接口">
+      <created>1611667931491</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611667931491</updated>
+    </task>
+    <task id="LOCAL-00004" summary="引入Stock库">
+      <created>1611923690513</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611923690513</updated>
+    </task>
+    <task id="LOCAL-00005" summary="实现数据变化通知功能">
+      <created>1612107528693</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1612107528693</updated>
+    </task>
+    <task id="LOCAL-00006" summary="实现数据变化通知功能">
+      <created>1612531367319</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1612531367319</updated>
+    </task>
+    <task id="LOCAL-00007" summary="更新CandleSeries相关代码">
+      <created>1613954955259</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1613954955259</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <MESSAGE value="实现柱体的鼠标事件回调" />
+    <MESSAGE value="CandleSeries增加获取成交额的接口" />
+    <MESSAGE value="引入Stock库" />
+    <MESSAGE value="实现数据变化通知功能" />
+    <MESSAGE value="更新CandleSeries相关代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新CandleSeries相关代码" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1048" y="464" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1611183258150">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state x="1048" y="464" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/70.0.2490.1440@70.0.2490.1440" timestamp="1611183258150" />
+    <state x="1121" y="422" key="#com.intellij.ide.util.MemberChooser" timestamp="1613954703053">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state x="1121" y="422" key="#com.intellij.ide.util.MemberChooser/70.0.2490.1440@70.0.2490.1440" timestamp="1613954703053" />
+    <state x="1327" y="358" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1611923503813">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state x="1327" y="358" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/70.0.2490.1440@70.0.2490.1440" timestamp="1611923503813" />
+    <state x="1099" y="606" key="DetectedRootsChooserDialog" timestamp="1611278662413">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state x="1099" y="606" key="DetectedRootsChooserDialog/70.0.2490.1440@70.0.2490.1440" timestamp="1611278662413" />
+    <state x="1112" y="389" key="FileChooserDialogImpl" timestamp="1611278661158">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state x="1112" y="389" key="FileChooserDialogImpl/70.0.2490.1440@70.0.2490.1440" timestamp="1611278661158" />
+    <state width="2447" height="372" key="GridCell.Tab.0.bottom" timestamp="1614045996063">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state width="2447" height="372" key="GridCell.Tab.0.bottom/70.0.2490.1440@70.0.2490.1440" timestamp="1614045996063" />
+    <state width="2447" height="372" key="GridCell.Tab.0.center" timestamp="1614045996063">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state width="2447" height="372" key="GridCell.Tab.0.center/70.0.2490.1440@70.0.2490.1440" timestamp="1614045996063" />
+    <state width="2447" height="372" key="GridCell.Tab.0.left" timestamp="1614045996063">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state width="2447" height="372" key="GridCell.Tab.0.left/70.0.2490.1440@70.0.2490.1440" timestamp="1614045996063" />
+    <state width="2447" height="372" key="GridCell.Tab.0.right" timestamp="1614045996063">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state width="2447" height="372" key="GridCell.Tab.0.right/70.0.2490.1440@70.0.2490.1440" timestamp="1614045996063" />
+    <state x="833" y="279" key="SettingsEditor" timestamp="1611183259692">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state x="833" y="279" key="SettingsEditor/70.0.2490.1440@70.0.2490.1440" timestamp="1611183259692" />
+  </component>
+</project>

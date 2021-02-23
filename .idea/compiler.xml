@@ -9,5 +9,8 @@
         <module name="CandleView" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CandleView" target="14" />
+    </bytecodeTargetLevel>
   </component>
 </project>
