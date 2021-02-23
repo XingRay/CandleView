@@ -10,13 +10,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c192adb2-6a9e-45dc-a76f-1454e1288d52" name="Default Changelist" comment="更新CandleSeries相关代码">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="c192adb2-6a9e-45dc-a76f-1454e1288d52" name="Default Changelist" comment="修复项目配置问题">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,13 +47,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../View" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -96,6 +96,7 @@
       <workItem from="1613954617502" duration="775000" />
       <workItem from="1613955866364" duration="5000" />
       <workItem from="1614045848539" duration="147000" />
+      <workItem from="1614046076223" duration="502000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1608886300011</created>
@@ -146,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613954955259</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修复项目配置问题">
+      <created>1614046299784</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1614046299784</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,13 +179,18 @@
     <MESSAGE value="引入Stock库" />
     <MESSAGE value="实现数据变化通知功能" />
     <MESSAGE value="更新CandleSeries相关代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新CandleSeries相关代码" />
+    <MESSAGE value="修复项目配置问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复项目配置问题" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1048" y="464" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1611183258150">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
     <state x="1048" y="464" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/70.0.2490.1440@70.0.2490.1440" timestamp="1611183258150" />
+    <state x="771" y="376" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614046200440">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state x="771" y="376" key="#com.intellij.execution.impl.EditConfigurationsDialog/70.0.2490.1440@70.0.2490.1440" timestamp="1614046200440" />
     <state x="1121" y="422" key="#com.intellij.ide.util.MemberChooser" timestamp="1613954703053">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
@@ -194,25 +207,29 @@
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
     <state x="1112" y="389" key="FileChooserDialogImpl/70.0.2490.1440@70.0.2490.1440" timestamp="1611278661158" />
-    <state width="2447" height="372" key="GridCell.Tab.0.bottom" timestamp="1614045996063">
+    <state width="2447" height="372" key="GridCell.Tab.0.bottom" timestamp="1614046578580">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="372" key="GridCell.Tab.0.bottom/70.0.2490.1440@70.0.2490.1440" timestamp="1614045996063" />
-    <state width="2447" height="372" key="GridCell.Tab.0.center" timestamp="1614045996063">
+    <state width="2447" height="372" key="GridCell.Tab.0.bottom/70.0.2490.1440@70.0.2490.1440" timestamp="1614046578580" />
+    <state width="2447" height="372" key="GridCell.Tab.0.center" timestamp="1614046578580">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="372" key="GridCell.Tab.0.center/70.0.2490.1440@70.0.2490.1440" timestamp="1614045996063" />
-    <state width="2447" height="372" key="GridCell.Tab.0.left" timestamp="1614045996063">
+    <state width="2447" height="372" key="GridCell.Tab.0.center/70.0.2490.1440@70.0.2490.1440" timestamp="1614046578580" />
+    <state width="2447" height="372" key="GridCell.Tab.0.left" timestamp="1614046578580">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="372" key="GridCell.Tab.0.left/70.0.2490.1440@70.0.2490.1440" timestamp="1614045996063" />
-    <state width="2447" height="372" key="GridCell.Tab.0.right" timestamp="1614045996063">
+    <state width="2447" height="372" key="GridCell.Tab.0.left/70.0.2490.1440@70.0.2490.1440" timestamp="1614046578580" />
+    <state width="2447" height="372" key="GridCell.Tab.0.right" timestamp="1614046578580">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="372" key="GridCell.Tab.0.right/70.0.2490.1440@70.0.2490.1440" timestamp="1614045996063" />
-    <state x="833" y="279" key="SettingsEditor" timestamp="1611183259692">
+    <state width="2447" height="372" key="GridCell.Tab.0.right/70.0.2490.1440@70.0.2490.1440" timestamp="1614046578580" />
+    <state x="846" y="376" key="Maven.ArtifactSearchDialog" timestamp="1614046518084">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state x="833" y="279" key="SettingsEditor/70.0.2490.1440@70.0.2490.1440" timestamp="1611183259692" />
+    <state x="846" y="376" key="Maven.ArtifactSearchDialog/70.0.2490.1440@70.0.2490.1440" timestamp="1614046518084" />
+    <state x="833" y="279" key="SettingsEditor" timestamp="1614046443900">
+      <screen x="70" y="0" width="2490" height="1440" />
+    </state>
+    <state x="833" y="279" key="SettingsEditor/70.0.2490.1440@70.0.2490.1440" timestamp="1614046443900" />
   </component>
 </project>
