@@ -23,7 +23,7 @@ public class IndicatorView extends FxView {
     private int textWidth = 40;
 
     // data
-    private final List<Line> lines;
+    private final List<Line> lines = new ArrayList<>();
     private DoubleSeries barSeries;
 
     // tmp
@@ -37,8 +37,6 @@ public class IndicatorView extends FxView {
     private List<IndicatorLineCallback> indicatorLineCallbacks;
 
     public IndicatorView() {
-        lines = new ArrayList<>();
-
         setOnMouseMoved(new EventHandler<>() {
             @Override
             public void handle(MouseEvent event) {
@@ -81,15 +79,38 @@ public class IndicatorView extends FxView {
         invalidate();
     }
 
+    public void addAll(List<Line> lines) {
+        if (lines == null) {
+            return;
+        }
+        boolean changed = this.lines.addAll(lines);
+
+        if (changed) {
+            isDataUpdated = true;
+            invalidate();
+        }
+    }
+
+    public void add(Line line) {
+        lines.add(line);
+
+        isDataUpdated = true;
+        invalidate();
+    }
+
     public void setLines(List<Line> lines) {
         this.lines.clear();
-        this.lines.addAll(lines);
+        if (lines != null) {
+            this.lines.addAll(lines);
+        }
+
         isDataUpdated = true;
         invalidate();
     }
 
     public void addLine(Line line) {
         lines.add(line);
+
         isDataUpdated = true;
         invalidate();
     }
@@ -113,11 +134,6 @@ public class IndicatorView extends FxView {
     public void setTextWidth(int textWidth) {
         this.textWidth = textWidth;
         invalidate();
-    }
-
-    public void notifyDataUpdated() {
-        this.isDataUpdated = true;
-        this.invalidate();
     }
 
     @Override

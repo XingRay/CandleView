@@ -12,6 +12,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c192adb2-6a9e-45dc-a76f-1454e1288d52" name="Default Changelist" comment="修复项目配置问题">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/CandleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/CandleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/CandleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/CandleView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/IndicatorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/IndicatorView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +100,7 @@
       <workItem from="1613955866364" duration="5000" />
       <workItem from="1614045848539" duration="147000" />
       <workItem from="1614046076223" duration="502000" />
+      <workItem from="1614046589760" duration="4282000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1608886300011</created>
@@ -154,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614046299784</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="修复项目配置问题">
+      <created>1614046642135</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1614046642135</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,22 +218,22 @@
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
     <state x="1112" y="389" key="FileChooserDialogImpl/70.0.2490.1440@70.0.2490.1440" timestamp="1611278661158" />
-    <state width="2447" height="372" key="GridCell.Tab.0.bottom" timestamp="1614046578580">
+    <state width="2447" height="147" key="GridCell.Tab.0.bottom" timestamp="1614084918681">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="372" key="GridCell.Tab.0.bottom/70.0.2490.1440@70.0.2490.1440" timestamp="1614046578580" />
-    <state width="2447" height="372" key="GridCell.Tab.0.center" timestamp="1614046578580">
+    <state width="2447" height="147" key="GridCell.Tab.0.bottom/70.0.2490.1440@70.0.2490.1440" timestamp="1614084918681" />
+    <state width="2447" height="147" key="GridCell.Tab.0.center" timestamp="1614084918681">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="372" key="GridCell.Tab.0.center/70.0.2490.1440@70.0.2490.1440" timestamp="1614046578580" />
-    <state width="2447" height="372" key="GridCell.Tab.0.left" timestamp="1614046578580">
+    <state width="2447" height="147" key="GridCell.Tab.0.center/70.0.2490.1440@70.0.2490.1440" timestamp="1614084918681" />
+    <state width="2447" height="147" key="GridCell.Tab.0.left" timestamp="1614084918681">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="372" key="GridCell.Tab.0.left/70.0.2490.1440@70.0.2490.1440" timestamp="1614046578580" />
-    <state width="2447" height="372" key="GridCell.Tab.0.right" timestamp="1614046578580">
+    <state width="2447" height="147" key="GridCell.Tab.0.left/70.0.2490.1440@70.0.2490.1440" timestamp="1614084918681" />
+    <state width="2447" height="147" key="GridCell.Tab.0.right" timestamp="1614084918681">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="372" key="GridCell.Tab.0.right/70.0.2490.1440@70.0.2490.1440" timestamp="1614046578580" />
+    <state width="2447" height="147" key="GridCell.Tab.0.right/70.0.2490.1440@70.0.2490.1440" timestamp="1614084918681" />
     <state x="846" y="376" key="Maven.ArtifactSearchDialog" timestamp="1614046518084">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
