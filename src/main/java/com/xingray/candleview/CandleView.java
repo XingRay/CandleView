@@ -5,6 +5,8 @@ import com.xingray.fxview.FxColor;
 import com.xingray.fxview.FxView;
 import com.xingray.javabase.range.DoubleRange;
 import com.xingray.stock.analysis.candle.Candle;
+import com.xingray.stock.analysis.candle.CandleList;
+import com.xingray.stock.analysis.indicator.DataList;
 import com.xingray.view.Canvas;
 import com.xingray.view.Color;
 import com.xingray.view.Paint;
@@ -32,7 +34,7 @@ public class CandleView extends FxView {
     private Color noneColor = FxColor.toColor(javafx.scene.paint.Color.GRAY);
 
     // data
-    private List<Candle> candleList = new ArrayList<>();
+    private final DataList<Candle> candleList = new CandleList();
     private final List<Line> lines = new ArrayList<>();
 
     // tmp
@@ -54,14 +56,14 @@ public class CandleView extends FxView {
                     return;
                 }
                 double y = event.getY();
-                List<Candle> candleList = CandleView.this.candleList;
-                if (candleList == null || candleList.size() == 0) {
+                DataList<Candle> candleList = CandleView.this.candleList;
+                if (candleList == null || candleList.length() == 0) {
                     return;
                 }
 
 
                 int index = (int) (x / barWidth) + firstBarIndex;
-                if (index >= candleList.size()) {
+                if (index >= candleList.length()) {
                     return;
                 }
                 if (selectEventHandlerList != null) {
@@ -107,15 +109,6 @@ public class CandleView extends FxView {
         this.textWidth = textWidth;
     }
 
-    public void setCandleList(List<Candle> candleList) {
-        this.candleList.clear();
-        if (candleList != null) {
-            this.candleList.addAll(candleList);
-        }
-        isDataUpdated = true;
-        invalidate();
-    }
-
     public void setBackgroundLineColor(Color color) {
         this.backgroundLineColor = color;
         invalidate();
@@ -148,7 +141,7 @@ public class CandleView extends FxView {
     }
 
     public void clear() {
-        if (candleList.isEmpty() && lines.isEmpty()) {
+        if (candleList.length() == 0 && lines.isEmpty()) {
             return;
         }
         candleList.clear();
@@ -158,15 +151,33 @@ public class CandleView extends FxView {
         invalidate();
     }
 
+    public void setCandleList(List<Candle> candleList) {
+        this.candleList.clear();
+        if (candleList != null) {
+            this.candleList.addAll(candleList);
+        }
+        isDataUpdated = true;
+        invalidate();
+    }
+
     public void addAll(List<Candle> candleList) {
         if (candleList == null) {
             return;
         }
-        boolean changed = this.candleList.addAll(candleList);
-        if (changed) {
-            isDataUpdated = true;
-            invalidate();
+        this.candleList.addAll(candleList);
+
+        isDataUpdated = true;
+        invalidate();
+    }
+
+    public void add(Candle candle) {
+        if (candle == null) {
+            return;
         }
+        this.candleList.add(candle);
+
+        isDataUpdated = true;
+        invalidate();
     }
 
     private double getY(double v) {
@@ -175,8 +186,8 @@ public class CandleView extends FxView {
 
     @Override
     public void onDraw(Canvas canvas) {
-        List<Candle> candleList = this.candleList;
-        int length = candleList == null ? 0 : candleList.size();
+        DataList<Candle> candleList = this.candleList;
+        int length = candleList.length();
         if (length == 0) {
             return;
         }
@@ -212,11 +223,11 @@ public class CandleView extends FxView {
         drawLines(canvas, lines, firstBarIndex, xPositions);
     }
 
-    public void drawCandles(Canvas canvas, List<Candle> candleList, int firstBarIndex, int barCount, double[] xPositions, double halfCandleWidth) {
-        if (candleList == null || candleList.size() == 0) {
+    public void drawCandles(Canvas canvas, DataList<Candle> candleList, int firstBarIndex, int barCount, double[] xPositions, double halfCandleWidth) {
+        if (candleList == null || candleList.length() == 0) {
             return;
         }
-        int size = Math.min(barCount, candleList.size() - firstBarIndex);
+        int size = Math.min(barCount, candleList.length() - firstBarIndex);
         for (int i = 0; i < size; i++) {
             double position = xPositions[i];
             Candle candle = candleList.get(i + firstBarIndex);

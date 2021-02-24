@@ -10,11 +10,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c192adb2-6a9e-45dc-a76f-1454e1288d52" name="Default Changelist" comment="修复项目配置问题">
+    <list default="true" id="c192adb2-6a9e-45dc-a76f-1454e1288d52" name="Default Changelist" comment="对接新版本stock库，去除CandleSeries">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/CandleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/CandleUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/CandleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/CandleView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/IndicatorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xingray/candleview/IndicatorView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +100,8 @@
       <workItem from="1613955866364" duration="5000" />
       <workItem from="1614045848539" duration="147000" />
       <workItem from="1614046076223" duration="502000" />
-      <workItem from="1614046589760" duration="4282000" />
+      <workItem from="1614046589760" duration="4317000" />
+      <workItem from="1614135901366" duration="2743000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1608886300011</created>
@@ -165,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614046642135</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="对接新版本stock库，去除CandleSeries">
+      <created>1614089150884</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1614089150884</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +199,8 @@
     <MESSAGE value="实现数据变化通知功能" />
     <MESSAGE value="更新CandleSeries相关代码" />
     <MESSAGE value="修复项目配置问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复项目配置问题" />
+    <MESSAGE value="对接新版本stock库，去除CandleSeries" />
+    <option name="LAST_COMMIT_MESSAGE" value="对接新版本stock库，去除CandleSeries" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1048" y="464" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1611183258150">
@@ -218,22 +227,22 @@
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
     <state x="1112" y="389" key="FileChooserDialogImpl/70.0.2490.1440@70.0.2490.1440" timestamp="1611278661158" />
-    <state width="2447" height="147" key="GridCell.Tab.0.bottom" timestamp="1614084918681">
+    <state width="2447" height="147" key="GridCell.Tab.0.bottom" timestamp="1614138440236">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="147" key="GridCell.Tab.0.bottom/70.0.2490.1440@70.0.2490.1440" timestamp="1614084918681" />
-    <state width="2447" height="147" key="GridCell.Tab.0.center" timestamp="1614084918681">
+    <state width="2447" height="147" key="GridCell.Tab.0.bottom/70.0.2490.1440@70.0.2490.1440" timestamp="1614138440236" />
+    <state width="2447" height="147" key="GridCell.Tab.0.center" timestamp="1614138440236">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="147" key="GridCell.Tab.0.center/70.0.2490.1440@70.0.2490.1440" timestamp="1614084918681" />
-    <state width="2447" height="147" key="GridCell.Tab.0.left" timestamp="1614084918681">
+    <state width="2447" height="147" key="GridCell.Tab.0.center/70.0.2490.1440@70.0.2490.1440" timestamp="1614138440236" />
+    <state width="2447" height="147" key="GridCell.Tab.0.left" timestamp="1614138440235">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="147" key="GridCell.Tab.0.left/70.0.2490.1440@70.0.2490.1440" timestamp="1614084918681" />
-    <state width="2447" height="147" key="GridCell.Tab.0.right" timestamp="1614084918681">
+    <state width="2447" height="147" key="GridCell.Tab.0.left/70.0.2490.1440@70.0.2490.1440" timestamp="1614138440235" />
+    <state width="2447" height="147" key="GridCell.Tab.0.right" timestamp="1614138440236">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>
-    <state width="2447" height="147" key="GridCell.Tab.0.right/70.0.2490.1440@70.0.2490.1440" timestamp="1614084918681" />
+    <state width="2447" height="147" key="GridCell.Tab.0.right/70.0.2490.1440@70.0.2490.1440" timestamp="1614138440236" />
     <state x="846" y="376" key="Maven.ArtifactSearchDialog" timestamp="1614046518084">
       <screen x="70" y="0" width="2490" height="1440" />
     </state>

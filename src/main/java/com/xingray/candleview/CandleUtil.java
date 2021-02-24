@@ -3,6 +3,7 @@ package com.xingray.candleview;
 import com.xingray.collection.CollectionUtil;
 import com.xingray.javabase.range.DoubleRange;
 import com.xingray.stock.analysis.candle.Candle;
+import com.xingray.stock.analysis.indicator.DataList;
 
 import java.util.List;
 
@@ -77,6 +78,32 @@ public class CandleUtil {
         return new DoubleRange(low, high);
     }
 
+    public static DoubleRange getValuesRange(DataList<Candle> candleList) {
+        if (candleList == null || candleList.length() == 0) {
+            return null;
+        }
+
+        int length = candleList.length();
+        Candle candle = candleList.get(0);
+        double low = candle.getLow().doubleValue();
+        double high = candle.getHigh().doubleValue();
+
+        for (int i = 1; i < length; i++) {
+            Candle candle1 = candleList.get(i);
+            double lowValue = candle1.getLow().doubleValue();
+            if (lowValue < low) {
+                low = lowValue;
+            }
+
+            double highValue = candle1.getHigh().doubleValue();
+            if (highValue > high) {
+                high = highValue;
+            }
+        }
+
+        return new DoubleRange(low, high);
+    }
+
     public static DoubleRange getValuesRange(List<Line> lines, DoubleRange range) {
         if (!CollectionUtil.isEmpty(lines)) {
             for (Line line : lines) {
@@ -95,6 +122,11 @@ public class CandleUtil {
     }
 
     public static DoubleRange getValuesRange(List<Candle> candleList, List<Line> lines) {
+        DoubleRange range = CandleUtil.getValuesRange(candleList);
+        return CandleUtil.getValuesRange(lines, range);
+    }
+
+    public static DoubleRange getValuesRange(DataList<Candle> candleList, List<Line> lines) {
         DoubleRange range = CandleUtil.getValuesRange(candleList);
         return CandleUtil.getValuesRange(lines, range);
     }
